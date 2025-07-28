@@ -14,13 +14,14 @@ services:
       dockerfile: backend.Dockerfile
     ports:
       - 7263:5000
-    volumes:
-      - ./demo/data/:/data/:rw
-      - ./demo/backend/server/:/opt/sam2/server/:rw
-      - ./sam2/:/opt/sam2/server/sam2/:rw
+    # volumes:
+    # - ./demo/data/:/data/:rw
+    # - ./demo/backend/server/:/opt/sam2/server/:rw
+    # - ./sam2/:/opt/sam2/server/sam2/:rw
     environment:
       - SERVER_ENVIRONMENT=DEV
       - GUNICORN_WORKERS=1
+      - MODEL_SIZE=base_plus
       # Inference API needs to have at least 2 threads to handle an incoming
       # parallel cancel propagation request
       - GUNICORN_THREADS=2
